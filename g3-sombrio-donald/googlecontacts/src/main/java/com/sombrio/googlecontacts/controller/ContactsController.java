@@ -1,4 +1,3 @@
-
 package com.sombrio.googlecontacts.controller;
 
 import com.google.api.services.people.v1.model.Person;
