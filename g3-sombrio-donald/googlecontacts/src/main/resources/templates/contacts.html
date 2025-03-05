@@ -156,8 +156,8 @@
         </thead>
         <tbody>
         <tr th:each="contact : ${contacts}"
-            th:if="${contact.names != null and contact.names.size() > 0}">
-            <td th:text="${contact.names[0].displayName}"></td>
+            th:with="displayName=${contact.names != null and contact.names.size() > 0 ? contact.names[0].displayName : 'Unnamed Contact'}">
+            <td th:text="${displayName}"></td>
             <td th:text="${contact.emailAddresses != null and contact.emailAddresses.size() > 0 ? contact.emailAddresses[0].value : 'No Email'}"></td>
             <td th:text="${contact.phoneNumbers != null and contact.phoneNumbers.size() > 0 ? contact.phoneNumbers[0].value : 'No Number'}"></td>
             <td class="action-buttons">
@@ -194,12 +194,12 @@
                                 <div class="mb-3">
                                     <label for="editGivenName" class="form-label">First Name</label>
                                     <input type="text" class="form-control" id="editGivenName" name="givenName"
-                                           th:value="${contact.names[0].givenName}" required>
+                                           th:value="${contact.names != null and contact.names.size() > 0 ? contact.names[0].givenName : ''}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="editFamilyName" class="form-label">Last Name</label>
                                     <input type="text" class="form-control" id="editFamilyName" name="familyName"
-                                           th:value="${contact.names[0].familyName}" required>
+                                           th:value="${contact.names != null and contact.names.size() > 0 ? contact.names[0].familyName : ''}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="editEmail" class="form-label">Email</label>
